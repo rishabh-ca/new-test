@@ -63,36 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      // ✅ Send to Auth0 Signup API
-      try {
-        const response = await fetch(
-          `https://${window.location.host}/dbconnections/signup`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              client_id: "YOUR_AUTH0_CLIENT_ID",
-              email: data.username,
-              password: data.password,
-              user_metadata: {
-                firstName: data.firstName,
-                lastName: data.lastName,
-                orgName: data.orgName,
-              },
-            }),
-          }
-        );
-
-        const result = await response.json();
-        if (result._id) {
-          alert("Signup Successfully! Please login.");
-          window.location.href = "/"; // redirect to login
-        } else {
-          alert(result.error || "Signup failed");
-        }
-      } catch (err) {
-        console.error(err);
-        alert("Something went wrong!");
-      }
+    console.log("form submitted successfully")
     });
 });
